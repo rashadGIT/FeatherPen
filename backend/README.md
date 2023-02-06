@@ -1,0 +1,3 @@
+# Faker-space
+
+Fastify Endpoints
