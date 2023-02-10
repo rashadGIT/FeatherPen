@@ -1,5 +1,4 @@
 import { FastifyInstance } from "fastify";
-// const { Configuration, OpenAIApi } = require('openai')
 import { Configuration, OpenAIApi } from "openai";
 
 function chatGPT(fastify: FastifyInstance, options: any, done: any) {
@@ -13,7 +12,7 @@ function chatGPT(fastify: FastifyInstance, options: any, done: any) {
 
     const response = await openai.createCompletion({
         model: 'text-davinci-003',
-        prompt: message || 'Tell Me a happy story in less than 100 words.',
+        prompt: message || 'Tell Me about cars in less than 100 words.',
         temperature: 0.3,
         max_tokens: 200,
         top_p: 1.0,
