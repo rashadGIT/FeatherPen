@@ -5,6 +5,7 @@ function chatGPT(fastify: FastInstance, options: any, done: any) {
     fastify.post('/chatGPT', options, async (request) => {
         const body: any = request.body
         const message = body?.message
+        console.log(body)
         const configuration = new Configuration({apiKey: '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'})
         const openAi = new OpenAIApi(configuration)
         const response = await openAi.createCompletion({

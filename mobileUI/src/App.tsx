@@ -14,16 +14,16 @@ function App() : JSX.Element {
   const [name, setName] = useState('');
   const [text, setText] = useState('');
   const [url, setUrl] = useState('http://192.168.1.10:3000/chatGPT');
+  const [msg, setMsg] = useState('');
 
   const speak = (msg = 'No message given') => {
     Tts.speak(msg)
   };
   
-  const getData = async () => {
-
+  const getData = async (message: string) => {
     const chatGPT = await axios
         .post(url, {
-            message: 'Tell me about summer.',
+            message: message,
         })
         .then((response) => {
             return response.data
@@ -34,20 +34,17 @@ function App() : JSX.Element {
     setText(chat);
   };
 
-  useEffect(() => {getData()},[]);
+  useEffect(() => {getData('')},[]);
 
   return (
-    <View style={boxStyles.container}>
-      <Text style={boxStyles.text}>{text}</Text>
-      <TextInput
-        style={styles.input}
-        onChangeText={setUrl}
-        value={url}
-      />
-      <Button title="Generate New Story" onPress={() => getData()} />
-      <Text style={boxStyles.text}>{url}</Text>
-    </View>
-  );
+      <View style={boxStyles.container}>
+          <Text style={boxStyles.text}>{text}</Text>
+          <TextInput style={styles.input} onChangeText={setMsg} value={msg} />
+          <TextInput style={styles.input} onChangeText={setUrl} value={url} />
+          <Button title="Generate New Story" onPress={() => getData(msg)} />
+          <Text style={boxStyles.text}>{url}</Text>
+      </View>
+  )
 }
 
 const styles = StyleSheet.create({
