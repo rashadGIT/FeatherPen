@@ -1,5 +1,5 @@
 {
-  "name": "FeatherPenBackend",
+  "name": "feather_pen_backend",
   "version": "1.0.0",
   "description": "Feather Pen Endpoints",
   "main": "./server.ts",
